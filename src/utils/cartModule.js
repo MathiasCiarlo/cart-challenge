@@ -4,7 +4,6 @@ class CartModule {
   constructor() {
     this.cartItems = reactive([]);
     this.totalPrice = ref(0);
-    this.refresh();
   }
 
   getItems() {
@@ -22,7 +21,6 @@ class CartModule {
     }
 
     this.cartItems.push(reactive(cartItem))
-    this.writeToBackend(product.id, 1)
   }
 
   increaseQuantity(productId) {
@@ -42,31 +40,6 @@ class CartModule {
     if (quantity === 0) {
       this.cartItems.splice(index, 1);
     }
-
-    await this.writeToBackend(productId, quantity);
-    this.refresh();
-  }
-
-  async writeToBackend(productId, quantity) {
-    fetch(`/api/cart/items/${productId}`, {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        quantity: quantity,
-      })
-    })
-  }
-
-  async refresh() {
-    const response = await fetch('/api/cart')
-    const cart = await response.json()
-    
-    // Empty existing array
-    this.cartItems.splice(0, this.cartItems.length)
-
-    cart.cartItems.forEach(cartItem => {
-      this.cartItems.push(reactive(cartItem))
-    });
   }
 }
 
