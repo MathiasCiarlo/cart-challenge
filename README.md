@@ -1,31 +1,57 @@
-# Cart Challenge
+# Cart Challenge 🛒✨
 
 Velkommen til cart challenge!
 
-Hovedmålet er å forstå hvilke utfordringer som kan oppstå i forbindelse med handlekurver. I tillegg skal vi få få testet ut Vue 3 med typescript!
+Hovedmålet er å forstå hvilke utfordringer som kan oppstå i forbindelse med handlekurver og hvordan vi kan løse dette. I tillegg skal vi få få testet ut Vue 3 med typescript!
+
+## Agenda
+10:00 - 10:30 Introduksjon til kodebasen og installasjon av pakker.
+
+10:30 - 12:00 Oppgaveløsning. Individuelt eller i grupper
+
+13:30 - 14:00 Presentasjoner og diskusjon
 
 ## Oppgaver
+1. Implementer cartModule.js slik at det går an å legge varer i handlekurven lokalt
 
-- Returner cart-hodet i alle kall
-- 
+1. Endre cartModule slik at den initialiseres med handlekurven fra backend.
 
-1. Gjøre om fra at hele carten returneres ved hvert kall til kun cart-hodet
+1. Oppdater backend ved endringer i handlekurven slik at endringer fremdeles er der etter refresh. gjør dette ved å gette api/cart etter hver request og overskrive handlekurven. Da får vi også den oppdaterte totalprisen i responsen
 
-1. Lazy loading
+1. Vis handlekurvens totalpris. Alle kunder har forskjellige priser, så dette må vi komme fra backendens api etter hver endring
 
-1. Tester! Test løsningen med Cypress
+1. Debounce endringer i handlekurven slik at vi ikke sender requests til backend mens brukeren fremdeles trykker på plussknappen. 500ms er en god ventetid.
 
-1. Skriv enhetstester til løsningen med vue test utils
+1. Håndter at handlekurven kan laste tregt. Det kan allerede ligge varer i handlekurven fra før
 
-1. Utvid hver linje til å vise totalprisen til linjen.
+1. Make it pretty
 
-# Vue 3 + TypeScript + Vite
+1. Importer typene som er deklarert i backend, slik at vi ikke trenger å duplisere dem
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+### Bonusoppgaver 🏎 
+1. Test løsningen med Cypress
+1. Skriv enhetstester til løsningen
 
-## Recommended IDE Setup
+# Hvordan kjøre
+1. Installer node (minst v16)
+2. Installer pakkene
+```sh
+$ npm install
+```
+3. Kjør opp backend
+```sh
+$ cd backend
+$ node app.js
+```
+4. Start så webserveren med HMR fra rot
+```sh
+$ npm run dev
+```
+Endringer i frontend lastes nå automatisk, men backend må restartes hvis du gjør endringer.
 
+# Recommended IDE Setup
 - [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
+
 
 ## Type Support For `.vue` Imports in TS
 
