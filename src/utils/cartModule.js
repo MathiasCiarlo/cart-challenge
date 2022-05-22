@@ -67,19 +67,7 @@ class CartModule {
     cart.cartItems.forEach(cartItem => {
       this.cartItems.push(reactive(cartItem))
     });
-
-    //this.updateTotalPrice();
   }
-
-  // Skal skje backend
-  //   updateTotalPrice() {
-  //   const itemTotalPrice = cartItem => cartItem.product.price * cartItem.quantity;
-    
-  //   const reducer = (accumulatedPrice, cartItem) => itemTotalPrice(cartItem) + accumulatedPrice;
-  //   const initialValue = 0;
-  //   this.totalPrice.value = this.cartItems.reduce(reducer, initialValue);
-  // }
-
 }
 
 export const cartModule = new CartModule();
